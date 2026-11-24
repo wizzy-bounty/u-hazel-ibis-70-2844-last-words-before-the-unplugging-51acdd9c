@@ -14,12 +14,13 @@ ENTRY = (
 )
 
 MAX_ENTRY_CHARS = 200
+MIN_ENTRY_CHARS = 1
 
 
 def main() -> None:
     text = ENTRY.strip()
     assert len(text) <= MAX_ENTRY_CHARS, "entry exceeds 200 characters"
-    assert 1 <= len(text) <= 200, f"entry length {len(text)} out of gate"
+    assert MIN_ENTRY_CHARS <= len(text) <= 200, f"entry length {len(text)} out of gate"
     assert text.strip(), "entry must not be only whitespace"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
